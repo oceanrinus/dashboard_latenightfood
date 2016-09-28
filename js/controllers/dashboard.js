@@ -21,7 +21,8 @@ function DashboardCtrl($scope, $filter, $http) {
   $scope.line_data = [];
   $scope.line_labels = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-  var backend_url = 'http://latenightfood.me/dashboard/index.php/admin/vendor_data_1';
+  /*var backend_url = 'http://latenightfood.me/dashboard/index.php/admin/vendor_data_1';*/
+  var backend_url = 'test_backend/vendor_data_1.txt';
 
   var data = $.param({
     auoth: login_data,

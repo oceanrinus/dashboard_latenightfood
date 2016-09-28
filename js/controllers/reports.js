@@ -19,7 +19,8 @@ $scope.currentPage = 0;
 $scope.total = '';
 $scope.items = [];
 
-var backend_url = 'http://latenightfood.me/dashboard/index.php/admin/vendor_data_2';
+/*var backend_url = 'http://latenightfood.me/dashboard/index.php/admin/vendor_data_2';*/
+var backend_url = 'test_backend/vendor_data_2.txt';
 
 var data = $.param({
              auoth: login_data,
