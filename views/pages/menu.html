@@ -1,0 +1,26 @@
+<div class="modal-header">
+  <h3 class="modal-title">Menu</h3>
+</div>
+<div class="modal-body" ng-init="editMenuDisabel=true">
+  <div class="form-group row">
+    <label class="col-md-3 form-control-label">Select menu&nbsp&nbsp&nbsp&nbsp :</label>
+    <select class="col-md-10 form-control-label" style="width: 200px;height: 26px;" ng-change="changed_menu=selected_menu" ng-model="selected_menu" ng-options="option for option in menu_data"></select>
+  </div>
+  <div class="form-group row">
+    <label for="" class="col-md-3 form-control-label">Selected menu :</label>
+    <input type="text" ng-disabled="editMenuDisabel" ng-change="menuChanged();" ng-model="changed_menu" ng-value="selected_menu" id="">
+    <button type="button" class="btn btn-sm btn-primary" ng-click="editMenuDisabel=false;onChange();" ng-disable="!editMenuDisabel">Change</button>
+    <button type="button" class="btn btn-sm btn-primary" ng-click="editMenuDisabel=true;onApply();" ng-show="!editMenuDisabel">Apply</button>
+    <button type="button" class="btn btn-sm btn-primary" ng-click="editMenuDisabel=true;onCancel();" ng-show="!editMenuDisabel">Cancel</button>
+  </div>
+  <div class="form-group row">
+    <label for="" class="col-md-3 form-control-label">New menu&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp :</label>
+    <input type="text" ng-model="new_menu" id="">
+    <button type="button" class="btn btn-sm btn-primary" ng-click="onAdd();">Add</button>
+  </div>
+  <!-- Selected : <b>{{ changed_menu }}</b> -->
+</div>
+<div class="modal-footer">
+  <button class="btn btn-sm btn-primary" type="button" ng-click="ok()">OK</button>
+  <button class="btn btn-sm btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div

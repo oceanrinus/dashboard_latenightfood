@@ -1,0 +1,80 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12" ng-controller="AddBranchCtrl" ng-init="enableCrop=true">
+      <div class="card">
+      <form name="uploadForm" ng-app="fileUpload" ng-controller="ImageCropUploadCtrl">
+        <div class="card-block">
+          <div class="form-group row">
+            <label class="col-md-2 form-control-label">Branch Name :</label>
+            <div class="col-md-10">
+              <input type="text" class="" id="" placeholder="Enter branch name" ng-model="branch_name">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="image-select" class="col-md-2">Select Image :</label>
+            <input id="image-select" class="col-md-10 form-control-label" type="file" ngf-select ng-model="picFile" accept="image/*"/>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-2"></div>
+            <div ngf-drop ng-model="picFile" ngf-pattern="image/*" class="col-md-4 cropArea">
+              <img-crop image="picFile  | ngfDataUrl" result-image="croppedDataUrl" ng-init="croppedDataUrl=''"></img-crop>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-4 croppedImage">
+              <img ng-src="{{croppedDataUrl}}" />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-2 form-control-label">Select branch menu :</label>
+            <div class="col-md-4">
+              <select class="col-md-10 form-control-label" style="width: 204px;height: 26px;" ng-model="menu" ng-options="option for option in menu_data"></select>
+            </div>
+            <div class="col-md-5" ng-controller="ModalCtrl">
+              <button type="button" class="btn btn-sm btn-primary" ng-click="open()">Add menu</button>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-2">
+              <label><strong>Branch Users</strong>
+              </label>
+            </div>
+            <div class="col-md-4">
+              <label class="form-control-label" for="addusername">Name :</label>&nbsp;
+              <input type="text" name="" id="addusername" placeholder="Enter user name" ng-model="new_user.name">
+            </div>
+            <div class="col-md-4">
+              <label class="form-control-label" for="addphonenumber">Phone Number :</label>&nbsp;
+              <input type="number" name="phone" id="addphonenumber" ng-minlength="1" ng-maxlength="15" placeholder="Enter phone number" ng-model="new_user.phone">
+            </div>
+            <div class="com-md-2">
+              <button class="btn btn-sm btn-primary" ng-click="onAddUser()">Add</button>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-12">
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Phone Number</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="user in users">
+                    <td>{{user.name}}</td>
+                    <td>{{user.phone}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button type="submit" class="btn btn-sm btn-primary" ng-click="upload(croppedDataUrl, picFile.name);onSubmit();">Submit</button> 
+          <button type="reset" class="btn btn-sm btn-danger" ng-click="onCancel();"><i class="fa fa-ban"></i> Cancel</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

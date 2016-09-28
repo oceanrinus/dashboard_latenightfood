@@ -1,0 +1,85 @@
+<div class="animated fadeIn" ng-controller="EditBranchCtrl" ng-init="enableCrop=true">
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-block">
+          <div class="form-group row">
+            <label class="col-md-12 form-control-label" for="allow_duplicate" style="font-size: 20px;">
+              <input type="checkbox" id="allow_duplicate" name="allow_duplicate" value="allow_duplicate">&nbsp;<strong>Menu duplicate existing</strong>
+            </label>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-2 form-control-label">Menu type</label>
+            <div class="col-md-10">
+              <div class="radio">
+                <label for="radio1" style="font-size: 15px;">
+                  <input type="radio" id="radio1" name="radios" value="normal" ng-model="menu_type">&nbsp;normal
+                </label>
+              </div>
+              <div class="radio">
+                <label for="radio2" style="font-size: 15px;">
+                  <input type="radio" id="radio2" name="radios" value="weight" ng-model="menu_type">&nbsp;with weights&nbsp;<i class="fa fa-times fa-md m-t-2"></i>
+                  <input type="number" name="weight">
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-2">
+              <label><strong>Add Item</strong></label>
+            </div>
+            <div class="col-md-5" ng-controller="ModalCtrl">
+              <button type="button" class="btn btn-sm btn-primary" ng-click="open()">Add menu</button>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-12">
+              <table class="table table-bordered table-striped table-condensed table-hover">
+                <thead>
+                  <tr>
+                    <th class="id">Item name</th>
+                    <th class="name">Item description</th>
+                    <th class="description">Item pic</th>
+                    <th class="field3">Item price</th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <td colspan="6">
+                    <div class="pagination pull-right">
+                      <ul>
+                        <li ng-class="{disabled: currentPage == 0}">
+                          <a href ng-click="prevPage()">« Prev</a>
+                        </li>
+
+                        <li ng-repeat="n in range(pagedItems.length, currentPage, currentPage + gap) " ng-class="{active: n == currentPage}" ng-click="setPage()">
+                          <a href ng-bind="n + 1">1</a>
+                        </li>
+
+                        <li ng-class="{disabled: (currentPage) == pagedItems.length - 1}">
+                          <a href ng-click="nextPage()">Next »</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </td>
+                </tfoot>
+                <tbody>
+                  <tr ng-repeat="item in pagedItems[currentPage] | orderBy:sort.sortingOrder:sort.reverse">
+                    <td>{{item.name}}</td>
+                    <td>{{item.desc}}</td>
+                    <td><center><img src="{{item.pic}}"></center></td>
+                    <td>{{item.price}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button type="submit" class="btn btn-sm btn-primary" ng-click="onSubmit();"><i class="fa fa-dot-circle-o"></i> Submit</button>
+          <button type="reset" class="btn btn-sm btn-danger" ng-click="onCancel();"><i class="fa fa-ban"></i> Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

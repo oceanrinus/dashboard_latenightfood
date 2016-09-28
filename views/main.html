@@ -1,0 +1,75 @@
+<div class="animated fadeIn" ng-controller="DashboardCtrl">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-asterisk icon-bg"></i>Pie Chart
+        </div>
+        <div class="card-block">
+          <canvas id="pie" class="chart chart-pie" chart-data="pie_data" chart-labels="pie_labels"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <i class="icon-graph icon-bg"></i>Line Chart
+        </div>
+        <div class="card-block">
+          <canvas id="line" class="chart chart-line" chart-data="line_data" chart-labels="line_labels" chart-click="onClick"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> Striped Table
+        </div>
+        <div class="card-block">
+          <table class="table table-bordered table-striped table-condensed table-hover">
+            <thead>
+              <tr>
+                <th class="name">Branch Name</th>
+                <th class="user">User</th>
+                <th class="items-sold">Number of Items</th>
+                <th class="last-active">Last active date</th>
+              </tr>
+            </thead>
+            <tfoot>
+              <td colspan="6">
+                <div class="pagination pull-right">
+                  <ul>
+                    <li ng-class="{disabled: currentPage == 0}">
+                      <a href ng-click="prevPage()">« Prev</a>
+                    </li>
+
+                    <li ng-repeat="n in range(pagedItems.length, currentPage, currentPage + gap) " ng-class="{active: n == currentPage}" ng-click="setPage()">
+                      <a href ng-bind="n + 1">1</a>
+                    </li>
+
+                    <li ng-class="{disabled: (currentPage) == pagedItems.length - 1}">
+                      <a href ng-click="nextPage()">Next »</a>
+                    </li>
+                  </ul>
+                </div>
+              </td>
+            </tfoot>
+            <tbody>
+              <tr ng-repeat="item in pagedItems[currentPage] | orderBy:sort.sortingOrder:sort.reverse">
+                <td>{{item.name}}</td>
+                <td>{{item.user}}</td>
+                <td>{{item.items_sold}}</td>
+                <td>{{item.last_active}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+  <!--/.row-->
+
+</div>
