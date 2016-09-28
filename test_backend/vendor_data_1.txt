@@ -1,0 +1,1 @@
+{"pie":["70","30"],"linechart":["45.2","55.6","20.0","21.1","33.2","45.0","50"],"last_active":[{"name":"Mecca st.","user":"Khaled","items_sold":"15","last_active":"150916"},{"name":"jabber","user":"ahmad","items_sold":"20","last_active":"150916"},{"name":"7th cicle st.","user":"sara","items_sold":"10","last_active":"140916"}]}
